@@ -1,4 +1,4 @@
-package be.ugent.ipem.teensydaq.util;
+package teensydaq.util;
 
 import java.net.InetAddress;
 import java.net.SocketException;
@@ -7,11 +7,11 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.LinkedList;
 
-import be.ugent.ipem.teensydaq.DAQDataHandler;
-import be.ugent.ipem.teensydaq.DAQSample;
-
 import com.illposed.osc.OSCMessage;
 import com.illposed.osc.OSCPortOut;
+
+import teensydaq.DAQDataHandler;
+import teensydaq.DAQSample;
 
 public class PeakDetectionToOSCDataHandler implements DAQDataHandler {
 	
@@ -89,7 +89,7 @@ public class PeakDetectionToOSCDataHandler implements DAQDataHandler {
 				smallestPeak = Math.min(smallestPeak, currentValue);
 				final float factor = (float) ((currentValue-smallestPeak)/(largestPeak-smallestPeak));
 				System.out.println("Detected peak of " + peakValue + "V at " + peakTime + " delay of " + latency + "ms"  + " factor: " + factor);
-				sendOSCMessage(new Float(sample.timestamp), new Float(factor));
+				sendOSCMessage(Double.valueOf(sample.timestamp), Float.valueOf(factor));
 			}
 			historyDown.clear();
 			historyUp.clear();
@@ -103,7 +103,7 @@ public class PeakDetectionToOSCDataHandler implements DAQDataHandler {
 		
 	}
 	
-	private void sendOSCMessage(final Float timestamp, final Float factor){
+	private void sendOSCMessage(final double timestamp, final Float factor){
 		new Thread(new Runnable(){
 			@Override
 			public void run() {
@@ -118,7 +118,7 @@ public class PeakDetectionToOSCDataHandler implements DAQDataHandler {
 					 System.out.println(e.getMessage());
 				 }
 				args = new ArrayList<Object>();
-				args.add(new Integer(1));
+				args.add(Integer.valueOf(1));
 				msg = new OSCMessage("/peak", args);
 				try {
 					//djogger.send(msg);

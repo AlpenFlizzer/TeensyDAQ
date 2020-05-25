@@ -1,4 +1,4 @@
-package be.ugent.ipem.teensydaq.util;
+package teensydaq.util;
 
 import jssc.SerialPort;
 import jssc.SerialPortEvent;

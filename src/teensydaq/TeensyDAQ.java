@@ -1,12 +1,12 @@
-package be.ugent.ipem.teensydaq;
+package teensydaq;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Logger;
 
 import jssc.SerialPortException;
-import be.ugent.ipem.teensydaq.util.SerialPortReader;
-import be.ugent.ipem.teensydaq.util.SerialPortReader.SerialDataLineHandler;
+import teensydaq.util.SerialPortReader;
+import teensydaq.util.SerialPortReader.SerialDataLineHandler;
 
 
 public class TeensyDAQ implements SerialDataLineHandler{

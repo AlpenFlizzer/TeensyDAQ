@@ -1,4 +1,4 @@
-package be.ugent.ipem.teensydaq.layers;
+package teensydaq.layers;
 
 import java.awt.Color;
 import java.awt.Graphics2D;

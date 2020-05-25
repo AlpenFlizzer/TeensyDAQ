@@ -1,4 +1,4 @@
-package be.ugent.ipem.teensydaq.util;
+package teensydaq.util;
 
 import java.awt.Color;
 

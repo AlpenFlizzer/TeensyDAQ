@@ -1,4 +1,4 @@
-package be.ugent.ipem.teensydaq;
+package teensydaq;
 
 public interface DAQDataHandler {
 	

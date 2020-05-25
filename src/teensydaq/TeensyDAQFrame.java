@@ -1,4 +1,4 @@
-package be.ugent.ipem.teensydaq;
+package teensydaq;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
@@ -50,12 +50,12 @@ import be.tarsos.dsp.ui.layers.DragMouseListenerLayer;
 import be.tarsos.dsp.ui.layers.SelectionLayer;
 import be.tarsos.dsp.ui.layers.TimeAxisLayer;
 import be.tarsos.dsp.ui.layers.ZoomMouseListenerLayer;
-import be.ugent.ipem.teensydaq.layers.LiveLayer;
-import be.ugent.ipem.teensydaq.layers.MarkCenterLayer;
-import be.ugent.ipem.teensydaq.layers.VoltsAxisLayer;
-import be.ugent.ipem.teensydaq.util.Configuration;
-import be.ugent.ipem.teensydaq.util.FileDrop;
-import be.ugent.ipem.teensydaq.util.SerialPortReader;
+import teensydaq.layers.LiveLayer;
+import teensydaq.layers.MarkCenterLayer;
+import teensydaq.layers.VoltsAxisLayer;
+import teensydaq.util.Configuration;
+import teensydaq.util.FileDrop;
+import teensydaq.util.SerialPortReader;
 
 
 public class TeensyDAQFrame extends JFrame implements ViewPortChangedListener, DAQDataHandler{
