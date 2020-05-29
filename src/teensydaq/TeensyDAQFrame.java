@@ -66,7 +66,7 @@ public class TeensyDAQFrame extends JFrame implements ViewPortChangedListener, D
 	 * 
 	 */
 	private static final long serialVersionUID = -7096578086282090881L;
-	private static final int MAX_ANALOG_INPUTS = 5;
+	private static final int MAX_ANALOG_INPUTS = 4;
 	
 	private final ConcurrentSkipListMap<Double, Double[]> data = new ConcurrentSkipListMap<Double, Double[]>();
 	private final Color[] colorMap =  Configuration.colorMap;

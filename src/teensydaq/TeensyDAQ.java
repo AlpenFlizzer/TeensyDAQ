@@ -14,8 +14,8 @@ public class TeensyDAQ implements SerialDataLineHandler{
 
 	private static final Logger LOG = Logger.getLogger(TeensyDAQ.class.getName());
 	
-	private static final  float REFERENCE_VOLTAGE = 3.3f;//v
-	private static final float STEPS = 8192f;//2^13
+	private static final  float REFERENCE_VOLTAGE = 5.0f;//v
+	private static final float STEPS = 65536f;//2^16
 	private static final float SCALER  = REFERENCE_VOLTAGE/STEPS;
 	
 	private float timeScaler; //period in seconds (1/sample rate)
@@ -38,7 +38,7 @@ public class TeensyDAQ implements SerialDataLineHandler{
 		this.startChannel = startChannel;
 		ranges = new DAQValueRange[numberOfChannels];
 		for(int i = 0 ; i < ranges.length ; i++){
-			ranges[i] = DAQValueRange.ZERO_TO_3_POINT_3_VOLTS;
+			ranges[i] = DAQValueRange.NEGATIVE_0_POINT_5_TO_5_POINT_5_VOLTS;
 		}
 		reader = new SerialPortReader(portName, this);
 		this.sampleRate = sampleRate;
@@ -116,7 +116,8 @@ public class TeensyDAQ implements SerialDataLineHandler{
 		
 		
 		for(int i = 0  ; i < numberOfChannels ; i++){
-			measurements[i] = Integer.parseInt(lineDataValues[i+1+startChannel].trim(),16) * SCALER;//voltage
+			//measurements[i] = Integer.parseInt(lineDataValues[i+1+startChannel].trim(),16) * SCALER;//voltage
+			measurements[i] = (Integer.parseInt(lineDataValues[i+1+startChannel].trim(),16) * 0.1875)/1000;//calculate voltage including gain
 		}
 		final DAQSample sample = new DAQSample(timeStampInS, measurements, ranges);
 		for(DAQDataHandler handler : dataHandlers){
